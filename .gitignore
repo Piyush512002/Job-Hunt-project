@@ -13,10 +13,11 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Runtime env files
+# Runtime env files (except frontend/.env which is needed for build config)
 .env
 .env.*.local
 .env.local
+!frontend/.env
 
 # OS files
 .DS_Store
