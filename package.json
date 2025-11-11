@@ -1,0 +1,12 @@
+{
+  "name": "job-hunt-monorepo",
+  "private": true,
+  "engines": {
+    "node": "^18.17.0 || >=20.5.0"
+  },
+  "scripts": {
+    "build": "npm ci --prefix frontend && npm run build --prefix frontend",
+    "start": "npm run start --prefix frontend",
+    "heroku-postbuild": "npm run build"
+  }
+}
