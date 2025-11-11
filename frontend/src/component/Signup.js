@@ -1,8 +1,7 @@
 import { useState, useContext } from "react";
-import {Grid,TextField,Button,Typography,makeStyles,Paper,MenuItem,Input,} from "@material-ui/core";
+import {Grid,TextField,Button,Typography,makeStyles,Paper,MenuItem,Input,Chip,} from "@material-ui/core";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import ChipInput from "material-ui-chip-input";
 import DescriptionIcon from "@material-ui/icons/Description";
 import FaceIcon from "@material-ui/icons/Face";
 import PhoneInput from "react-phone-input-2";
@@ -102,6 +101,35 @@ const MultifieldInput = (props) => {
         </Button>
       </Grid>
     </>
+  );
+};
+
+const TagsInput = ({ value = [], onChange, label }) => {
+  const [text, setText] = useState("");
+  const addTag = () => {
+    const t = text.trim();
+    if (!t) return;
+    onChange(Array.from(new Set([...value, t]))); // avoid duplicates
+    setText("");
+  };
+  const handleKeyDown = (e) => { if (e.key === "Enter") { e.preventDefault(); addTag(); } };
+  const removeTag = (tag) => onChange(value.filter((t) => t !== tag));
+  return (
+    <div>
+      <TextField
+        label={label}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        onKeyDown={handleKeyDown}
+        variant="outlined"
+        size="small"
+      />
+      <Paper style={{ display: "flex", gap: 8, padding: 8, marginTop: 8, flexWrap: "wrap" }}>
+        {value.map((t) => (
+          <Chip key={t} label={t} onDelete={() => removeTag(t)} />
+        ))}
+      </Paper>
+    </div>
   );
 };
 
@@ -389,14 +417,10 @@ const Signup = (props) => {
               setEducation={setEducation}
             />
             <Grid item>
-              <ChipInput
-                className={classes.inputBox}
+              <TagsInput
+                value={signupDetails.skills}
+                onChange={(chips) => setSignupDetails({ ...signupDetails, skills: chips })}
                 label="Skills"
-                variant="outlined"
-                helperText="Press enter to add skills"
-                onChange={(chips) =>
-                  setSignupDetails({ ...signupDetails, skills: chips })
-                }
               />
             </Grid>
             <Grid item>

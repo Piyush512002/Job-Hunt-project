@@ -10,7 +10,7 @@ import {
   Avatar,
 } from "@material-ui/core";
 import axios from "axios";
-import ChipInput from "material-ui-chip-input";
+import TagsInput from "./TagsInput";
 import FileUploadInput from "../lib/FileUploadInput";
 import DescriptionIcon from "@material-ui/icons/Description";
 import FaceIcon from "@material-ui/icons/Face";
@@ -319,20 +319,18 @@ const Profile = (props) => {
                 setEducation={setEducation}
               />
               <Grid item>
-                <ChipInput
+                <TagsInput
                   className={classes.inputBox}
                   label="Skills"
-                  variant="outlined"
-                  helperText="Press enter to add skills"
-                  value={profileDetails.skills}
+                  value={profileDetails.skills || []}
                   onAdd={(chip) =>
                     setProfileDetails({
                       ...profileDetails,
-                      skills: [...profileDetails.skills, chip],
+                      skills: [...(profileDetails.skills || []), chip],
                     })
                   }
                   onDelete={(chip, index) => {
-                    let skills = profileDetails.skills;
+                    let skills = [...(profileDetails.skills || [])];
                     skills.splice(index, 1);
                     setProfileDetails({
                       ...profileDetails,

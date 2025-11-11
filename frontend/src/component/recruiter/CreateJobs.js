@@ -10,7 +10,7 @@ import {
   MenuItem,
 } from "@material-ui/core";
 import axios from "axios";
-import ChipInput from "material-ui-chip-input";
+import TagsInput from "../TagsInput";
 
 import { SetPopupContext } from "../../App";
 
@@ -132,20 +132,18 @@ const CreateJobs = (props) => {
                   />
                 </Grid>
                 <Grid item>
-                  <ChipInput
+                  <TagsInput
                     className={classes.inputBox}
                     label="Skills"
-                    variant="outlined"
-                    helperText="Press enter to add skills"
-                    value={jobDetails.skillsets}
+                    value={jobDetails.skillsets || []}
                     onAdd={(chip) =>
                       setJobDetails({
                         ...jobDetails,
-                        skillsets: [...jobDetails.skillsets, chip],
+                        skillsets: [...(jobDetails.skillsets || []), chip],
                       })
                     }
                     onDelete={(chip, index) => {
-                      let skillsets = jobDetails.skillsets;
+                      let skillsets = [...(jobDetails.skillsets || [])];
                       skillsets.splice(index, 1);
                       setJobDetails({
                         ...jobDetails,
