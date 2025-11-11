@@ -1,0 +1,52 @@
+# Node
+node_modules/
+**/node_modules/
+
+# Frontend build outputs
+frontend/build/
+build/
+dist/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime env files
+.env
+.env.*.local
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Cache
+.cache/
+.cache-loader/
+coverage/
+
+# Misc
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# ESLint cache
+.eslintcache
+
+# Uploaded user files (don't commit uploaded profile/resume files)
+/backend/public/profile/
+/backend/public/resume/
+
+# Windows dump stack (avoid permission issues being tracked)
+DumpStack.log.tmp
