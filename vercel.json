@@ -1,5 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "NODE_OPTIONS=--openssl-legacy-provider npm run build",
+  "buildCommand": "DISABLE_ESLINT_PLUGIN=true NODE_OPTIONS=--openssl-legacy-provider npm run build",
   "outputDirectory": "build"
 }
