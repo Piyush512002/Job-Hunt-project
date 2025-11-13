@@ -143,6 +143,7 @@ const Profile = (props) => {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+        withCredentials: true,
       })
       .then((response) => {
         console.log(response.data);
@@ -236,6 +237,7 @@ const Profile = (props) => {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+        withCredentials: true,
       })
       .then((response) => {
         setPopup({

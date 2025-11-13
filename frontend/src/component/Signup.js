@@ -238,8 +238,10 @@ const Signup = (props) => {
     });
 
     if (verified) {
+      console.log(apiList,updatedDetails,verified,'logss');
+      
       axios
-        .post(apiList.signup, updatedDetails)
+        .post(apiList.signup, updatedDetails, { withCredentials: true })
         .then((response) => {
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("type", response.data.type);
@@ -255,7 +257,7 @@ const Signup = (props) => {
           setPopup({
             open: true,
             severity: "error",
-            message: err.response.data.message,
+            message: err.response?.data?.message || "An error occurred",
           });
           console.log(err.response);
         });
@@ -309,7 +311,7 @@ const Signup = (props) => {
 
     if (verified) {
       axios
-        .post(apiList.signup, updatedDetails)
+        .post(apiList.signup, updatedDetails, { withCredentials: true })
         .then((response) => {
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("type", response.data.type);
@@ -325,7 +327,7 @@ const Signup = (props) => {
           setPopup({
             open: true,
             severity: "error",
-            message: err.response.data.message,
+            message: err.response?.data?.message || "An error occurred",
           });
           console.log(err.response);
         });

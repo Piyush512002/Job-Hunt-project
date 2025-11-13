@@ -21,6 +21,7 @@ const FileUploadInput = (props) => {
       headers: {
         "Content-Type": "multipart/form-data",
       },
+      withCredentials: true,
       onUploadProgress: (progressEvent) => {
         setUploadPercentage(
           parseInt(

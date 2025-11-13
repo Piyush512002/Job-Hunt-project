@@ -59,6 +59,7 @@ const CreateJobs = (props) => {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+        withCredentials: true,
       })
       .then((response) => {
         setPopup({

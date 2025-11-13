@@ -338,6 +338,7 @@ const ApplicationTile = (props) => {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
+          withCredentials: true,
         }
       )
       .then((response) => {
@@ -428,6 +429,7 @@ const ApplicationTile = (props) => {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+        withCredentials: true,
       })
       .then((response) => {
         setPopup({
@@ -677,6 +679,7 @@ const AcceptedApplicants = (props) => {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+        withCredentials: true,
       })
       .then((response) => {
         console.log(response.data);

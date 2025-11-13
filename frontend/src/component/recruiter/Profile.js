@@ -49,8 +49,10 @@ const Profile = (props) => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    getData();
-  }, []);
+    if (profileDetails.name.length === 0) {
+      getData();
+    }
+  }, [profileDetails, getData]);
 
   const getData = () => {
     axios
@@ -58,6 +60,7 @@ const Profile = (props) => {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+        withCredentials: true,
       })
       .then((response) => {
         console.log(response.data);
@@ -95,6 +98,7 @@ const Profile = (props) => {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+        withCredentials: true,
       })
       .then((response) => {
         setPopup({
@@ -123,7 +127,7 @@ const Profile = (props) => {
         alignItems="center"
         style={{ padding: "30px", minHeight: "93vh" }}
       >
-        
+
         <Grid item xs style={{ width: "100%" }}>
           <Paper
             style={{
@@ -137,11 +141,11 @@ const Profile = (props) => {
             }}
           >
             <Grid container direction="column" alignItems="stretch" spacing={3}>
-            <Grid item >
-              <Typography variant="h3" component="h2" style={{color:"#3f51b5",fontWeight:"bold"}}>
-                Profile
-              </Typography>
-            </Grid>
+              <Grid item >
+                <Typography variant="h3" component="h2" style={{ color: "#3f51b5", fontWeight: "bold" }}>
+                  Profile
+                </Typography>
+              </Grid>
               <Grid item>
                 <TextField
                   label="Name"

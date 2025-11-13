@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import {
-  Button,Chip,Grid,makeStyles,Paper,Typography,Modal,
+  Button, Chip, Grid, makeStyles, Paper, Typography, Modal,
 } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
 import axios from "axios";
@@ -51,6 +51,7 @@ const ApplicationTile = (props) => {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+        withCredentials: true,
       })
       .then((response) => {
         setRating(response.data.rating);
@@ -76,6 +77,7 @@ const ApplicationTile = (props) => {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
+          withCredentials: true,
         }
       )
       .then((response) => {
@@ -138,7 +140,7 @@ const ApplicationTile = (props) => {
           </Grid>
           <Grid item>Applied On: {appliedOn.toLocaleDateString()}</Grid>
           {application.status === "accepted" ||
-          application.status === "finished" ? (
+            application.status === "finished" ? (
             <Grid item>Joined On: {joinedOn.toLocaleDateString()}</Grid>
           ) : null}
         </Grid>
@@ -155,7 +157,7 @@ const ApplicationTile = (props) => {
             </Paper>
           </Grid>
           {application.status === "accepted" ||
-          application.status === "finished" ? (
+            application.status === "finished" ? (
             <Grid item>
               <Button
                 variant="contained"
@@ -212,8 +214,10 @@ const Applications = (props) => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    getData();
-  }, []);
+    if (applications.length === 0) {
+      getData();
+    }
+  }, [applications, getData]);
 
   const getData = () => {
     axios
@@ -221,6 +225,7 @@ const Applications = (props) => {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+        withCredentials: true,
       })
       .then((response) => {
         console.log(response.data);
@@ -246,7 +251,7 @@ const Applications = (props) => {
       style={{ padding: "30px", minHeight: "93vh" }}
     >
       <Grid item>
-        <Typography variant="h2" style={{color:"white",fontWeight:"bold"}}>Applications</Typography>
+        <Typography variant="h2" style={{ color: "white", fontWeight: "bold" }}>Applications</Typography>
       </Grid>
 
       <Grid
@@ -265,8 +270,10 @@ const Applications = (props) => {
             </Grid>
           ))
         ) : (
-          <Typography variant="h5" style={{ height:"50px", textAlign: "center",
-          background:"rgba(255,255,255,0.5)",marginLeft:"25%",marginRight:"25%",paddingTop:"15px"}}>
+          <Typography variant="h5" style={{
+            height: "50px", textAlign: "center",
+            background: "rgba(255,255,255,0.5)", marginLeft: "25%", marginRight: "25%", paddingTop: "15px"
+          }}>
             No Applications Found
           </Typography>
         )}

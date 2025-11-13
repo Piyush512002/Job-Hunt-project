@@ -12,7 +12,6 @@ import {
   Modal,
   Slider,
   FormControlLabel,
-  FormGroup,
   MenuItem,
   Checkbox,
 } from "@material-ui/core";
@@ -96,6 +95,7 @@ const JobTile = (props) => {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+        withCredentials: true,
       })
       .then((response) => {
         setPopup({
@@ -123,6 +123,7 @@ const JobTile = (props) => {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+        withCredentials: true,
       })
       .then((response) => {
         setPopup({
@@ -370,7 +371,7 @@ const FilterPopup = (props) => {
               item
               xs={9}
               justify="space-around"
-              // alignItems="center"
+            // alignItems="center"
             >
               <Grid item>
                 <FormControlLabel
@@ -770,6 +771,7 @@ const MyJobs = (props) => {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+        withCredentials: true,
       })
       .then((response) => {
         console.log(response.data);
@@ -802,7 +804,7 @@ const MyJobs = (props) => {
           alignItems="center"
         >
           <Grid item xs>
-            <Typography variant="h2" style={{color:"white",fontWeight:"bold"}}>My Jobs</Typography>
+            <Typography variant="h2" style={{ color: "white", fontWeight: "bold" }}>My Jobs</Typography>
           </Grid>
           <Grid item xs>
             <TextField
@@ -828,7 +830,7 @@ const MyJobs = (props) => {
                   </InputAdornment>
                 ),
               }}
-              style={{ width: "500px",backgroundColor:"white", borderRadius:"12px"}}
+              style={{ width: "500px", backgroundColor: "white", borderRadius: "12px" }}
               variant="outlined"
             />
           </Grid>
@@ -852,8 +854,10 @@ const MyJobs = (props) => {
               return <JobTile job={job} getData={getData} />;
             })
           ) : (
-            <Typography variant="h5" style={{height:"50px", textAlign: "center",
-            background:"rgba(255,255,255,0.5)",marginLeft:"25%",marginRight:"25%",paddingTop:"15px" }}>
+            <Typography variant="h5" style={{
+              height: "50px", textAlign: "center",
+              background: "rgba(255,255,255,0.5)", marginLeft: "25%", marginRight: "25%", paddingTop: "15px"
+            }}>
               No jobs found
             </Typography>
           )}

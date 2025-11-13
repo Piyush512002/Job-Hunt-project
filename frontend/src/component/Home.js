@@ -13,7 +13,6 @@ import {
   MenuItem,
   Slider,
   FormControlLabel,
-  FormGroup,
   Checkbox,
 } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
@@ -76,6 +75,7 @@ const JobTile = (props) => {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
+          withCredentials: true,
         }
       )
       .then((response) => {
@@ -602,6 +602,7 @@ const Home = (props) => {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+        withCredentials: true,
       })
       .then((response) => {
         console.log(response.data);
