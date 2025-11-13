@@ -17,8 +17,7 @@ import FaceIcon from "@material-ui/icons/Face";
 
 import { SetPopupContext } from "../App";
 
-import apiList, {server} from "../lib/apiList";
-import { Alert } from "@material-ui/lab";
+import apiList from "../lib/apiList";
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -113,7 +112,6 @@ const MultifieldInput = (props) => {
 const Profile = (props) => {
   const classes = useStyles();
   const setPopup = useContext(SetPopupContext);
-  const [userData, setUserData] = useState();
   const [open, setOpen] = useState(false);
 
   const [profileDetails, setProfileDetails] = useState({
@@ -138,10 +136,6 @@ const Profile = (props) => {
       [key]: value,
     });
   };
-
-  useEffect(() => {
-    getData();
-  }, []);
 
   const getData = () => {
     axios
@@ -172,6 +166,10 @@ const Profile = (props) => {
         });
       });
   };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
    
   const getResume= ()=>{

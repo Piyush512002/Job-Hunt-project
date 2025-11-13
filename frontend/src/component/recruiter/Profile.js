@@ -3,7 +3,6 @@ import {
   Button,
   Grid,
   Typography,
-  Modal,
   Paper,
   makeStyles,
   TextField,
@@ -48,6 +47,7 @@ const Profile = (props) => {
     });
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     getData();
   }, []);
@@ -164,7 +164,7 @@ const Profile = (props) => {
                   onChange={(event) => {
                     if (
                       event.target.value.split(" ").filter(function (n) {
-                        return n != "";
+                        return n !== "";
                       }).length <= 250
                     ) {
                       handleInput("bio", event.target.value);

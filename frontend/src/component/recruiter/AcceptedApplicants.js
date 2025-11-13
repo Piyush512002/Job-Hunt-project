@@ -7,7 +7,6 @@ import {
   InputAdornment,
   makeStyles,
   Paper,
-  TextField,
   Typography,
   Modal,
   Slider,
@@ -17,7 +16,6 @@ import {
   Checkbox,
   Avatar,
 } from "@material-ui/core";
-import { useParams } from "react-router-dom";
 import Rating from "@material-ui/lab/Rating";
 import axios from "axios";
 import FilterListIcon from "@material-ui/icons/FilterList";
@@ -641,6 +639,7 @@ const AcceptedApplicants = (props) => {
     },
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     getData();
   }, []);

@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import {Grid,TextField,Button,Typography,makeStyles,Paper,MenuItem,Input,Chip,} from "@material-ui/core";
+import {Grid,TextField,Button,Typography,makeStyles,Paper,MenuItem,Chip,} from "@material-ui/core";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import DescriptionIcon from "@material-ui/icons/Description";
@@ -471,7 +471,7 @@ const Signup = (props) => {
                 onChange={(event) => {
                   if (
                     event.target.value.split(" ").filter(function (n) {
-                      return n != "";
+                      return n !== "";
                     }).length <= 250
                   ) {
                     handleInput("bio", event.target.value);

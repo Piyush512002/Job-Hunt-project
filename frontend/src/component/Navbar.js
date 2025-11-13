@@ -30,7 +30,7 @@ const Navbar = (props) => {
     <AppBar position="fixed" background= "transparent">
       <Toolbar style={{minHeight: "80px",textDecoration:"none"}}>
         <Typography variant="h6" className={classes.title} style={{fontSize: "32px",fontWeight: "800"}}>
-        <img src="https://media.licdn.com/dms/image/C4D0BAQEDP_qzv9wAEg/company-logo_200_200/0/1677675740004?e=2147483647&v=beta&t=wVyoKlU_KZiZ7iJjXZw4ulKwl4z1-4zBhHZbWkqv44A"style={{borderRadius:"50%"}} width="30px" height="auto" ></img><a href="/" style={{textDecoration:"none",color:"white"}}>   Job Hunt</a>
+        <img src="https://media.licdn.com/dms/image/C4D0BAQEDP_qzv9wAEg/company-logo_200_200/0/1677675740004?e=2147483647&v=beta&t=wVyoKlU_KZiZ7iJjXZw4ulKwl4z1-4zBhHZbWkqv44A" alt="Job Hunt Logo" style={{borderRadius:"50%"}} width="30px" height="auto" ></img><a href="/" style={{textDecoration:"none",color:"white"}}>   Job Hunt</a>
         </Typography>
         <div style={{marginTop:"20px"}}>
         {isAuth() ? (
