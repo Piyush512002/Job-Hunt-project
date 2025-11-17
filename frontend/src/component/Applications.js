@@ -214,10 +214,8 @@ const Applications = (props) => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    if (applications.length === 0) {
       getData();
-    }
-  }, [applications, getData]);
+  }, []);
 
   const getData = () => {
     axios
