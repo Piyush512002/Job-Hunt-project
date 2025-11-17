@@ -49,10 +49,8 @@ const Profile = (props) => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    if (profileDetails.name.length === 0) {
       getData();
-    }
-  }, [profileDetails, getData]);
+  }, []);
 
   const getData = () => {
     axios
