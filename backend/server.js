@@ -64,7 +64,7 @@ app.use("/upload", require("./routes/uploadRoutes"));
 app.use("/host", require("./routes/downloadRoutes"));
 
 app.get("/", (req, res) => {
-  res.send("✅ Job Hunt Backend is running successfully!");
+  res.redirect("https://job-hunt-project.vercel.app");
 });
 
 app.listen(port, () => {
