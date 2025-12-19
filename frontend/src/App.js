@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Grid, makeStyles } from "@material-ui/core";
+import { Analytics } from "@vercel/analytics/react";
 
 import Welcome, { ErrorPage } from "./component/Welcome";
 import Navbar from "./component/Navbar";
@@ -43,6 +44,7 @@ function App() {
   });
 
   return (
+    <>
     <BrowserRouter>
       
       <SetPopupContext.Provider value={setPopup}>
@@ -110,6 +112,8 @@ function App() {
         />
       </SetPopupContext.Provider>
     </BrowserRouter>
+    <Analytics />
+    </>
   );
 }
 
